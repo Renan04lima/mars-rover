@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from typing import List, Tuple
 
@@ -7,6 +8,16 @@ from src.application.simulator import MarsRoverSimulator
 app = FastAPI(
     title="Mars Rover Simulator API",
     description="An API to control and simulate the Mars Rover navigation."
+)
+
+origins = ["*"] # Use specific origins in production
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,         # Allows specified origins
+    allow_credentials=True,        # Allows cookies/credentials
+    allow_methods=["*"],           # Allows all methods (GET, POST, PUT, DELETE, etc.)
+    allow_headers=["*"],           # Allows all headers
 )
 
 class SimulationRequest(BaseModel):
