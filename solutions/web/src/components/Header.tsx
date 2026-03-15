@@ -1,5 +1,4 @@
 import { Link } from '@tanstack/react-router'
-import ResumeAssistantButton from './ResumeAssistantButton'
 import ThemeToggle from './ThemeToggle'
 
 export default function Header() {
@@ -45,8 +44,6 @@ export default function Header() {
               />
             </svg>
           </a>
-          <ResumeAssistantButton />
-
           <ThemeToggle />
         </div>
 
