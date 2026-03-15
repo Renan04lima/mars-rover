@@ -1,5 +1,5 @@
 import { useRoverSimulation } from '../hooks/useRoverSimulation';
-import {RoverPiece} from './Rover/RoverPiece';
+import {RoverPiece} from './RoverPiece';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MapPin, Settings2 } from 'lucide-react';
 

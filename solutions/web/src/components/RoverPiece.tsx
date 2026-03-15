@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { type Direction } from '../../types/rover';
+import { type Direction } from '../types/rover';
 import { Bot } from 'lucide-react';
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
