@@ -4,7 +4,7 @@ This repository contains the solution for the Mars Rover Control System challeng
 
 ## Preview
 web: [https://main.dxqrn2rmlqa5a.amplifyapp.com](https://main.dxqrn2rmlqa5a.amplifyapp.com)
-api: [http://52.54.75.89:8000/docs](http://52.54.75.89:8000/docs)
+api: [https://ec2-100-51-158-5.compute-1.amazonaws.com/docs](https://ec2-100-51-158-5.compute-1.amazonaws.com/docs)
 
 ## Architecture
 
@@ -54,4 +54,4 @@ To run this application locally without installing language-specific dependencie
 
 The project is deployed on AWS using the following infrastructure:
 *   **Backend API:** Deployed using Terraform (infrastructure configuration can be found in the `terraform` directory).
-*   **Frontend Web:** Deployed and hosted using AWS Amplify.
+*   **Frontend Web:** Deployed and hosted using AWS Amplify with CI/CD.
