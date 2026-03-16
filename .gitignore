@@ -231,3 +231,8 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+solutions/terraform/.terraform/providers/registry.terraform.io/hashicorp/aws/6.36.0/darwin_amd64/LICENSE.txt
+solutions/terraform/.terraform/providers/registry.terraform.io/hashicorp/aws/6.36.0/darwin_amd64/terraform-provider-aws_v6.36.0_x5
+solutions/terraform/.terraform.lock.hcl
+solutions/terraform/terraform.tfstate.backup
+solutions/terraform/terraform.tfstate
