@@ -3,7 +3,9 @@ provider "aws" {
 }
 
 ############################
+
 # VARIABLES
+
 ############################
 
 variable "aws_region" {
@@ -23,7 +25,9 @@ variable "key_name" {
 }
 
 ############################
+
 # KEY PAIR
+
 ############################
 
 resource "aws_key_pair" "deployer" {
@@ -32,7 +36,9 @@ resource "aws_key_pair" "deployer" {
 }
 
 ############################
+
 # VPC
+
 ############################
 
 resource "aws_vpc" "mars_vpc" {
@@ -44,7 +50,9 @@ resource "aws_vpc" "mars_vpc" {
 }
 
 ############################
+
 # SUBNET
+
 ############################
 
 resource "aws_subnet" "public_subnet" {
@@ -59,7 +67,9 @@ resource "aws_subnet" "public_subnet" {
 }
 
 ############################
+
 # INTERNET GATEWAY
+
 ############################
 
 resource "aws_internet_gateway" "igw" {
@@ -71,7 +81,9 @@ resource "aws_internet_gateway" "igw" {
 }
 
 ############################
+
 # ROUTE TABLE
+
 ############################
 
 resource "aws_route_table" "public_rt" {
@@ -93,7 +105,9 @@ resource "aws_route_table_association" "rt_assoc" {
 }
 
 ############################
+
 # SECURITY GROUP
+
 ############################
 
 resource "aws_security_group" "mars_sg" {
@@ -109,12 +123,18 @@ resource "aws_security_group" "mars_sg" {
   }
 
   ingress {
+    description = "HTTPS"
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
     description = "SSH"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-
-    # ideal seria colocar seu IP
     cidr_blocks = ["0.0.0.0/0"]
   }
 
@@ -147,11 +167,13 @@ resource "aws_security_group" "mars_sg" {
 }
 
 ############################
+
 # EC2
+
 ############################
 
 resource "aws_instance" "mars_server" {
-  ami = "ami-0b6c6ebed2801a5cb" # Canonical, Ubuntu, 24.04, amd64 noble image
+  ami           = "ami-0b6c6ebed2801a5cb"
   instance_type = "t3.micro"
 
   subnet_id              = aws_subnet.public_subnet.id
@@ -172,21 +194,34 @@ resource "aws_instance" "mars_server" {
 }
 
 ############################
-# OUTPUTS
+
+# ELASTIC IP
+
 ############################
 
-output "public_ip" {
-  value = aws_instance.mars_server.public_ip
+resource "aws_eip" "mars_eip" {
+  domain = "vpc"
+}
+
+resource "aws_eip_association" "mars_eip_assoc" {
+  instance_id   = aws_instance.mars_server.id
+  allocation_id = aws_eip.mars_eip.id
+}
+
+############################
+
+# OUTPUTS
+
+############################
+
+output "elastic_ip" {
+  value = aws_eip.mars_eip.public_ip
 }
 
 output "ssh_command" {
-  value = "ssh ubuntu@${aws_instance.mars_server.public_ip}"
-}
-
-output "frontend_url" {
-  value = "http://${aws_instance.mars_server.public_ip}:3000"
+  value = "ssh ubuntu@${aws_eip.mars_eip.public_ip}"
 }
 
 output "backend_docs" {
-  value = "http://${aws_instance.mars_server.public_ip}:8000/docs"
+  value = "http://${aws_eip.mars_eip.public_ip}:8000/docs"
 }
