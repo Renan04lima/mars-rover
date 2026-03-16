@@ -60,9 +60,8 @@ class MarsRover:
         for command in commands:
             success = self._command_map[command]()
             if not success:
-                # Based on requirements, if an obstacle is hit, it could mean ignoring the forward
-                # move or pathing around. Given the single linear command stream, we'll just not move.
-                # In more advanced navigation, it would calculate an alternate route.
+                # Based on requirements, if an obstacle or boundary is hit, the rover
+                # ignores the forward/backward move. It can still turn.
                 pass
 
     def _move_forward(self) -> bool:

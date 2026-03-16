@@ -77,9 +77,9 @@
 
 **Output:**
 
-- Final Position: `(3, 1)`
-- Final Orientation: `N` (North)
-- Data Collected: `[(3, 1)]`
+- Final Position: `(1, 0)`
+- Final Orientation: `E` (East)
+- Data Collected: `[(1, 0)]`
 
 #### Scenario 3: Complex Path with Multiple Obstacles
 
@@ -92,9 +92,9 @@
 
 **Output:**
 
-- Final Position: `(3, 2)`
+- Final Position: `(2, 3)`
 - Final Orientation: `S` (South)
-- Data Collected: `[(3, 2)]`
+- Data Collected: `[(2, 3)]`
 
 #### Scenario 4: Hitting the Boundary of the Grid
 
@@ -107,7 +107,7 @@
 
 **Output:**
 
-- Final Position: `(1, 1)`
-- Final Orientation: `W` (West)
-- Data Collected: `[(1, 1)]`
+- Final Position: `(2, 0)`
+- Final Orientation: `N` (North)
+- Data Collected: `[(2, 0)]`
 
