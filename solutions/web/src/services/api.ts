@@ -1,9 +1,9 @@
 import { type SimulationRequest, type SimulationResponse } from '../types/rover'
 
-const API_URL = import.meta.env.REACT_APP_API_URL || 'http://localhost:8000';
+const VITE_API_URL = import.meta.env.VITE_API_URL;
 
 export const simulateMission = async (payload: SimulationRequest): Promise<SimulationResponse> => {
-  const response = await fetch(`${API_URL}/simulate`, {
+  const response = await fetch(`${VITE_API_URL}/simulate`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
