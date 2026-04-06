@@ -3,8 +3,8 @@
 This repository contains the solution for the Mars Rover Control System challenge. The project consists of a high-performance Python backend API and a modern web frontend.
 
 ## Preview
-web: [https://main.dxqrn2rmlqa5a.amplifyapp.com](https://main.dxqrn2rmlqa5a.amplifyapp.com)
-api: [https://ec2-100-51-158-5.compute-1.amazonaws.com/docs](https://ec2-100-51-158-5.compute-1.amazonaws.com/docs)
+web: [https://main.d3ghymqdgrccxc.amplifyapp.com](https://main.d3ghymqdgrccxc.amplifyapp.com)
+api: [https://ec2-35-173-4-36.compute-1.amazonaws.com/docs](https://ec2-35-173-4-36.compute-1.amazonaws.com/docs)
 
 ## Architecture
 
